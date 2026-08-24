@@ -186,8 +186,8 @@ function main() {
     var dcDeltaX = new Color();
     var dcDeltaY = new Color();
 
-    var slopeX = ulx-lrx;
-    var slopeY = uly-lry;
+    var slopeX = lrx-ulx;
+    var slopeY = lry-uly;
     var slope = Math.ceil(slopeY/slopeX);
     
     // do the interpolation
