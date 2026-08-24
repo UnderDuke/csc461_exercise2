@@ -159,11 +159,11 @@ function main() {
  
     // Define a rectangle in 2D with colors and coords at corners
     var ulc = new Color(0,255,255,255); // upper left corner color: cyan
-    var urc = new Color(255,0,255,255); // upper right corner color: pink
+    //var urc = new Color(255,0,255,255); // upper right corner color: pink
     var llc = new Color(255,255,0,255); // lower left corner color: yellow
     var lrc = new Color(255, 192, 203, 255); // lower right corner color: pink
     var ulx = 50, uly = 50; // upper left corner position
-    var urx = 200, ury = 50; // upper right corner position
+    //var urx = 200, ury = 50; // upper right corner position
     var llx = 50, lly = 150; // lower left corner position
     var lrx = 200, lry = 150; // lower right corner position
     
@@ -178,14 +178,26 @@ function main() {
     var hc = new Color(); // horizontal color
     var hDelta = 1 / (urx-ulx); // norm'd horizontal delta
     var hcDelta = new Color(); // horizontal color delta
+
+    // set up diagonal interpolation
+    var dc = new Color();
+    var dDeltaX = 1 / (ulx-lrx);
+    var dDeltaY = 1 / (uly-lry);
+    var dcDeltaX = new Color();
+    var dcDeltaY = new Color();
+
+    var slopeX = ulx-lrx;
+    var slopeY = uly-lry;
     
     // do the interpolation
     for (var y=uly; y<=lly; y++) {
         hc.copy(lc); // begin with the left color
         hcDelta.copy(rc).subtract(lc).scale(hDelta); // reset horiz color delta
         for (var x=ulx; x<=urx; x++) {
-            drawPixel(imagedata,x,y,hc);
-            hc.add(hcDelta);
+            if (x <= y * slopeX) {
+                drawPixel(imagedata,x,y,hc);
+                hc.add(hcDelta);
+            }
         } // end horizontal
         lc.add(lcDelta);
         rc.add(rcDelta);
