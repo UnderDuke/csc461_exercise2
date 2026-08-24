@@ -165,7 +165,7 @@ function main() {
     var ulx = 50, uly = 50; // upper left corner position
     var urx = 300, ury = 50; // upper right corner position
     var llx = 50, lly = 150; // lower left corner position
-    var lrx = 200, lry = 150; // lower right corner position
+    var lrx = 300, lry = 150; // lower right corner position
     
     // set up the vertical interpolation
     var lc = ulc.clone();  // left color
