@@ -159,7 +159,7 @@ function main() {
  
     // Define a rectangle in 2D with colors and coords at corners
     var ulc = new Color(0,255,255,255); // upper left corner color: cyan
-    //var urc = new Color(255,0,255,255); // upper right corner color: pink
+    var urc = new Color(255,0,255,255); // upper right corner color: pink
     var llc = new Color(255,255,0,255); // lower left corner color: yellow
     var lrc = new Color(255, 192, 203, 255); // lower right corner color: pink
     var ulx = 50, uly = 50; // upper left corner position
