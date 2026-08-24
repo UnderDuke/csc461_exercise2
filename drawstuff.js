@@ -194,11 +194,10 @@ function main() {
     for (var y=uly; y<=lly; y++) {
         hc.copy(lc); // begin with the left color
         hcDelta.copy(rc).subtract(lc).scale(hDelta); // reset horiz color delta
-        for (var x=ulx; x<=urx; x++) {
-            if (x <= y / slope) {
-                drawPixel(imagedata,x,y,hc);
-                hc.add(hcDelta);
-            }
+        console.log(y/slope);
+        for (var x=ulx; x<=y/slope; x++) {
+            drawPixel(imagedata,x,y,hc);
+            hc.add(hcDelta);
         } // end horizontal
         lc.add(lcDelta);
         rc.add(rcDelta);
